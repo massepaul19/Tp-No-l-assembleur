@@ -11,6 +11,9 @@
 ## 📋 Description du projet
 
 Ce projet implémente une **calculatrice simple en assembleur x86** (architecture 32 bits, format ELF) permettant d'effectuer les opérations suivantes :
+
+###Pour contrainte de temps j'ai utilisé l'ia afin d'accomplir rapidement 
+
 - ✅ **Addition**
 - ➖ **Soustraction**
 - ✖️ **Multiplication**
