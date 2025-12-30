@@ -1,0 +1,21 @@
+# Fichiers objets
+obj/
+*.o
+
+# Exécutables
+bin/
+calc
+phase1
+phase2
+phase3
+phase4
+phase5
+
+# Fichiers temporaires
+*~
+*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/
