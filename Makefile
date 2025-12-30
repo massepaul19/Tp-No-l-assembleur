@@ -33,8 +33,9 @@ CALCO_OBJECTS = $(CALCO_OBJ_DIR)/main.o \
 
 .PHONY: all clean cleanall help phase1 phase2 phase3 phase4 phase5 calc
 
-# Compiler la calculatrice modulaire complète (phase 6)
-all: calc
+# Compiler la calculatrice modulaire complète et toutes les phases
+all: calc phase1 phase2 phase3 phase4 phase5
+
 
 calc: $(CALCO_OBJECTS)
 	@mkdir -p $(BIN_DIR)
