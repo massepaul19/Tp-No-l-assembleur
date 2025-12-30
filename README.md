@@ -284,40 +284,11 @@ echo $?
 
 ---
 
-## 🔄 Workflow Git
-```bash
-# 1. Toujours synchroniser avant de commencer à travailler
-git pull origin main
-
-# 2. Ajouter toutes les modifications au Staging Area
-git add .
-
-# 3. Enregistrer les modifications localement (Créer un 'Commit')
-git commit -m "Description de ma modification"
-
-# 4. Publier les commits locaux sur GitHub
-git push origin main
-```
-
----
-
 ## 📧 Contact
 
 Pour toute question sur le TP :
 - **Auteur :** PAUL-BASTHYLLE MASSE MASSE
 - **GitHub :** [massepaul19](https://github.com/massepaul19)
-
----
-
-## 📄 Barème
-
-- **Phase 1 :** 2 points
-- **Phase 2 :** 3 points
-- **Phase 3 :** 3 points
-- **Phase 4 :** 4 points
-- **Phase 5 :** 4 points
-- **Phase 6 :** 4 points
-- **Total :** 20 points
 
 ---
 
