@@ -12,10 +12,14 @@
 
 Ce projet implémente une **calculatrice simple en assembleur x86** (architecture 32 bits, format ELF) permettant d'effectuer les opérations suivantes :
 
+
 - ✅ **Addition**
 - ➖ **Soustraction**
 - ✖️ **Multiplication**
 - ➗ **Division**
+
+### Note
+Avec des compétences en programmation modulaire en C , je me suis servi aussi du supprot de cours et de l'**ia** pour accomplir ce projet.
 
 Le programme affiche un menu interactif, lit deux chiffres (0-9) depuis l'entrée standard, effectue l'opération choisie et affiche le résultat.
 
@@ -82,9 +86,9 @@ TP Assembleur/
 │       └── division.o
 ├── cours_assembleur_support_1.pdf        # 📖 Support de cours
 ├── GSI_531_TP1_Assembleur_2025_2026_2.pdf # 📄 Énoncé du TP
-├── Reponses_questions.odt                # 📝 Réponses aux questions du TP
+├── Reponses_questions.pdf                # 📝 Réponses aux questions du TP
 ├── Makefile                              # ⚙️ Fichier d'automatisation
-└── README.md                             # 📚 Ce fichier
+└── README.md                             
 ```
 
 ---
@@ -234,68 +238,38 @@ Vous verrez s'afficher :
   COMPILATION MODULAIRE :
   make all           - Compiler la calculatrice modulaire et toutes les phases 
   make calc          - Compiler la calculatrice modulaire
-  ...
-```
 
-### 3️⃣ Compiler et exécuter la calculatrice modulaire
+  PHASES INDIVIDUELLES :
+  make phase1        - Compiler la phase 1 (affichage message)
+  make phase2        - Compiler la phase 2 (lecture clavier)
+  make phase3        - Compiler la phase 3 (addition simple)
+  make phase4        - Compiler la phase 4 (menu + CMP/JE)
+  make phase5        - Compiler la phase 5 (MUL/DIV)
 
-```bash
-# Méthode 1 : Compilation puis exécution
-make calc         # Compile tous les modules
-make run          # Exécute la calculatrice
+  EXÉCUTION :
+  make run           - Exécuter la calculatrice modulaire
+  make run_phase1    - Exécuter la phase 1
+  make run_phase2    - Exécuter la phase 2
+  make run_phase3    - Exécuter la phase 3
+  make run_phase4    - Exécuter la phase 4
+  make run_phase5    - Exécuter la phase 5
 
-# Méthode 2 : Tout en une commande
-make test_all     # Compile ET exécute directement
+  TESTS RAPIDES (Compile + Execute) :
+  make test_phase1   - Compiler + exécuter phase 1
+  make test_phase2   - Compiler + exécuter phase 2
+  make test_phase3   - Compiler + exécuter phase 3
+  make test_phase4   - Compiler + exécuter phase 4
+  make test_phase5   - Compiler + exécuter phase 5
+  make test_all      - Compiler + exécuter calculatrice complète
 
-# Méthode 3 : Utiliser la cible par défaut
-make all          # Compile tout (équivalent à make calc)
-make run          # Exécute
-```
+  NETTOYAGE :
+  make clean         - Supprimer fichiers .o et exécutables
+  make cleanall      - Supprimer obj/ et bin/ complètement
+  make efface	     - Effacer le terminal
 
-### 4️⃣ Tester les phases individuelles
-
-```bash
-# Tester la phase 3 par exemple
-make test_phase3  # Compile et exécute la phase 3
-
-# Ou manuellement
-make phase3       # Compile
-make run_phase3   # Exécute
-```
-
-### 5️⃣ Nettoyage
-
-```bash
-# Nettoyer les fichiers compilés
-make clean
-
-# Nettoyer complètement (supprime obj/ et bin/)
-make cleanall
-
-# Effacer le terminal
-make efface
-```
-
----
-
-## 📖 Commandes disponibles dans le Makefile
-
-### 🏗️ Compilation modulaire
-
-| Commande | Description | Sortie |
-|----------|-------------|--------|
-| `make all` | Compile la calculatrice modulaire complète | `bin/calc` |
-| `make calc` | Compile la calculatrice modulaire | `bin/calc` |
-
-Le processus de compilation :
-```
-1. main.asm        → obj/calco/main.o
-2. menu.asm        → obj/calco/menu.o
-3. addition.asm    → obj/calco/addition.o
-4. soustraction.asm → obj/calco/soustraction.o
-5. multiplication.asm → obj/calco/multiplication.o
-6. division.asm    → obj/calco/division.o
-7. Linkage de tous les .o → bin/calc
+╔════════════════════════════════════════════════════════════╗
+║Auteur: PAUL-BASTHYLLE MASSE MASSE | GSI 531 | Décembre 2025║
+╚════════════════════════════════════════════════════════════╝
 ```
 
 ### 📚 Compilation des phases individuelles
@@ -519,7 +493,7 @@ Après DIV : AL = 3 (quotient), AH = 2 (reste)
 
 ---
 
-### **Phase 6 : Programme complet modulaire (4 points)** ✅ 🆕
+### **Phase 6 : Programme complet modulaire (4 points)** 
 **Objectif :** Assembler toutes les phases en une architecture professionnelle
 
 **Concepts abordés :**
@@ -538,105 +512,6 @@ make calc         # Compiler (ou make all)
 make run          # Exécuter
 make test_all     # Compiler et exécuter
 ```
-
-**Workflow de compilation :**
-```
-Phase 1 : Assemblage de chaque module (.asm → .o)
-  ├─ main.asm → main.o
-  ├─ menu.asm → menu.o
-  ├─ addition.asm → addition.o
-  ├─ soustraction.asm → soustraction.o
-  ├─ multiplication.asm → multiplication.o
-  └─ division.asm → division.o
-
-Phase 2 : Linkage de tous les .o → exécutable
-  └─ ld *.o → bin/calc
-```
-
----
-
-## 🔧 Exemple d'utilisation complète
-
-### Workflow complet de développement
-
-```bash
-# 1. Nettoyer l'environnement
-make cleanall
-
-# 2. Compiler la calculatrice
-make calc
-
-# Sortie attendue :
-# 🔨 Assemblage de main.asm...
-# 🔨 Assemblage de menu.asm...
-# 🔨 Assemblage de addition.asm...
-# 🔨 Assemblage de soustraction.asm...
-# 🔨 Assemblage de multiplication.asm...
-# 🔨 Assemblage de division.asm...
-# 🔗 Linkage de la calculatrice modulaire...
-# ✅ Calculatrice modulaire compilée : bin/calc
-
-# 3. Exécuter la calculatrice
-make run
-```
-
-### Session d'utilisation interactive
-
-```bash
-$ make run
-▶️  Lancement de la calculatrice modulaire...
-
-╔═══════════════════════════════════════╗
-║   CALCULATRICE SIMPLE - v2.0.0        ║
-║   Architecture modulaire              ║
-╚═══════════════════════════════════════╝
-
-=== MENU PRINCIPAL ===
-1. Addition (+)
-2. Soustraction (-)
-3. Multiplication (×)
-4. Division (÷)
-0. Quitter
-
-Votre choix : 1
-
-Premier chiffre (0-9) : 7
-Deuxième chiffre (0-9) : 5
-
-✅ Résultat : 12
-
-Appuyez sur Entrée pour continuer...
-
-=== MENU PRINCIPAL ===
-1. Addition (+)
-2. Soustraction (-)
-3. Multiplication (×)
-4. Division (÷)
-0. Quitter
-
-Votre choix : 4
-
-Premier chiffre (0-9) : 9
-Deuxième chiffre (0-9) : 4
-
-✅ Quotient : 2
-✅ Reste : 1
-
-Appuyez sur Entrée pour continuer...
-
-=== MENU PRINCIPAL ===
-1. Addition (+)
-2. Soustraction (-)
-3. Multiplication (×)
-4. Division (÷)
-0. Quitter
-
-Votre choix : 0
-
-👋 Au revoir !
-```
-
----
 
 ## 📝 Notes techniques importantes
 
